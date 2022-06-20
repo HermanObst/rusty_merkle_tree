@@ -1,5 +1,6 @@
 mod merkle_tree;
 
 fn main() {
-    let _a = merkle_tree::create_leaf(vec![1, 2, 3]);
+    let merkle_tree = merkle_tree::create_merkle_tree(vec![1, 2, 3, 4]);
+    println!("{:?}", merkle_tree);
 }

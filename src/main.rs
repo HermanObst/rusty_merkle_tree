@@ -1,6 +1,7 @@
 mod merkle_tree;
 
 fn main() {
-    println!("hola beluuu");
+    merkle_tree::create_leaf(vec![1,2,3]);
+    merkle_tree::create_leaf(vec![2,1,5]);
 }
 

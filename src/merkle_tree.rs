@@ -1,6 +1,7 @@
 use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher};
 
+// given a vector of data, returns another vector with the hash of each element.
 pub fn create_leaf(data_vec: Vec<i64>) -> Vec<u64> {
 	let	mut leaf = Vec::new();
 	for data in data_vec {
@@ -8,6 +9,17 @@ pub fn create_leaf(data_vec: Vec<i64>) -> Vec<u64> {
 	};
 	println!("{:?}",leaf);
 	leaf
+}
+
+pub fn create_internal_nodes(previous_hash_list: Vec<u64>) -> Vec<u64> {
+	let mut parent_nodes = Vec::new();
+	let mut i = 0;
+
+	while i <= previous_hash_list.len() {
+		parent_nodes.push(calculate_hash(&(previous_hash_list[i] + previous_hash_list[i+1])));
+		i += 2;
+	}
+	parent_nodes
 }
 
 pub fn calculate_hash<T: Hash>(t: &T) -> u64 {
